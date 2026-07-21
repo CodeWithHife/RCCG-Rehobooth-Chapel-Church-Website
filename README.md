@@ -23,8 +23,8 @@ A responsive church web platform architected with Next.js and Tailwind CSS, feat
 Clone the repository and install dependencies:
 
 ```bash
-git clone <your-repo-url>
-cd <your-project-folder>
+git clone https://github.com/CodeWithHife/RCCG-Rehobooth-Chapel-Church-Website.git
+cd RCCG-Rehobooth-Chapel-Church-Website
 npm install
 ```
 
