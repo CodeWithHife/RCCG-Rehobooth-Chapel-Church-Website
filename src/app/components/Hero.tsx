@@ -225,7 +225,7 @@ export default function Hero() {
           </Link>
           <Link
             href="/give"
-            className="w-full sm:w-auto sm:min-w-[180px] text-center border border-white/70 text-white font-semibold text-sm sm:text-base px-6 py-3.5 sm:py-3 rounded-full active:scale-95 hover:bg-white hover:text-[#0B1E3D] sm:hover:-translate-y-0.5 transition-all duration-300"
+            className="w-fit mx-auto sm:mx-0 sm:w-auto sm:min-w-[180px] text-center border border-white/70 text-white font-semibold text-sm sm:text-base px-8 py-3.5 sm:py-3 rounded-full active:scale-95 hover:bg-white hover:text-[#0B1E3D] sm:hover:-translate-y-0.5 transition-all duration-300"
           >
             Give
           </Link>
