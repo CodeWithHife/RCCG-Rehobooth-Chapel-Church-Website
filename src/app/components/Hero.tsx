@@ -94,7 +94,6 @@ export default function Hero() {
     return () => clearInterval(slideInterval);
   }, []);
 
-  // Show the mobile popup shortly after load
   useEffect(() => {
     const timer = setTimeout(() => setShowMobilePopup(true), 800);
     return () => clearTimeout(timer);
@@ -116,7 +115,7 @@ export default function Hero() {
               alt="Worship service"
               fill
               priority={index === 0}
-              className="object-cover"
+              className="object-cover object-[center_35%]"
             />
           </div>
         ))}
@@ -129,11 +128,11 @@ export default function Hero() {
           showMobilePopup ? "translate-y-0 opacity-100" : "-translate-y-6 opacity-0 pointer-events-none"
         }`}
       >
-        <div className="bg-gradient-to-br from-[#3a0f3f]/95 via-[#4a1a52]/95 to-[#2a1454]/95 backdrop-blur-md border border-white/20 rounded-xl px-5 py-4 shadow-lg shadow-black/40 flex items-center justify-between gap-3">
+        <div className="bg-gradient-to-br from-[#3a0f3f]/95 via-[#4a1a52]/95 to-[#2a1454]/95 backdrop-blur-md border border-white/20 rounded-xl px-4 py-3.5 shadow-lg shadow-black/40 flex items-center justify-between gap-3">
           {ongoing ? (
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse shrink-0" />
-              <p className="text-white text-sm font-medium">
+              <p className="text-white text-xs sm:text-sm font-medium">
                 Service is <span className="text-[#D4AF37] font-semibold">ongoing</span> — join us now!
               </p>
             </div>
@@ -142,7 +141,7 @@ export default function Hero() {
               <p className="text-[#D4AF37] text-[10px] tracking-widest font-semibold mb-1">
                 DON'T MISS CHURCH
               </p>
-              <p className="text-white text-sm">
+              <p className="text-white text-xs sm:text-sm">
                 Service starts in{" "}
                 <span className="font-bold">
                   {days}d {hours}h {minutes}m
@@ -160,7 +159,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <section className="px-6 md:px-16 pt-16 md:pt-24 pb-32 max-w-5xl">
+      <section className="px-6 sm:px-8 md:px-16 pt-32 md:pt-14 pb-16 md:pb-32 max-w-5xl">
         {/* Desktop Countdown / Ongoing Card */}
         <div className="hidden md:block absolute top-24 right-16 bg-gradient-to-br from-[#3a0f3f]/80 via-[#4a1a52]/80 to-[#2a1454]/80 backdrop-blur-md border border-white/20 rounded-xl px-8 py-6 text-center shadow-lg shadow-black/30">
           {ongoing ? (
@@ -199,32 +198,34 @@ export default function Hero() {
         </div>
 
         {/* Headline */}
-        <h1 className="font-serif font-bold text-5xl md:text-6xl leading-tight text-white mt-10">
+        <h1 className="font-serif font-bold text-4xl sm:text-5xl md:text-6xl leading-tight text-white mt-6 md:mt-6">
           RCCG REHOBOTH <br />
           <span className="text-[#D4AF37]">CHAPEL</span>
         </h1>
 
         {/* Quote */}
-        <p className="text-[#D4AF37] italic mt-10 text-lg">" Room for More "</p>
+        <p className="text-[#D4AF37] italic mt-10 md:mt-10 text-base md:text-lg">
+          " Room for More "
+        </p>
 
         {/* Description */}
-        <p className="text-gray-200 mt-6 max-w-xl leading-relaxed">
+        <p className="text-gray-200 mt-7 md:mt-6 max-w-xl leading-relaxed text-sm sm:text-base">
           Founded in April 2016, we are a family of believers committed to holiness,
           worship, and reaching every nation for the Lord Jesus Christ. You are welcome —
           there is room for you here.
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex gap-4 mt-10">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-12 md:mt-10">
           <Link
             href="/programs"
-            className="flex-1 sm:flex-none sm:w-48 text-center bg-[#D4AF37] text-[#0B1E3D] font-bold px-6 py-3 rounded-full shadow-md shadow-black/30 hover:bg-[#c29d2e] hover:shadow-lg hover:shadow-[#D4AF37]/30 hover:-translate-y-0.5 transition-all duration-300"
+            className="w-full sm:w-auto sm:min-w-[180px] text-center bg-[#D4AF37] text-[#0B1E3D] font-bold text-sm sm:text-base px-6 py-3.5 sm:py-3 rounded-full shadow-md shadow-black/30 active:scale-95 hover:bg-[#c29d2e] hover:shadow-lg hover:shadow-[#D4AF37]/30 sm:hover:-translate-y-0.5 transition-all duration-300"
           >
             Our Programs
           </Link>
           <Link
             href="/give"
-            className="flex-1 sm:flex-none sm:w-48 text-center border border-white/70 text-white font-semibold px-6 py-3 rounded-full hover:bg-white hover:text-[#0B1E3D] hover:-translate-y-0.5 transition-all duration-300"
+            className="w-full sm:w-auto sm:min-w-[180px] text-center border border-white/70 text-white font-semibold text-sm sm:text-base px-6 py-3.5 sm:py-3 rounded-full active:scale-95 hover:bg-white hover:text-[#0B1E3D] sm:hover:-translate-y-0.5 transition-all duration-300"
           >
             Give
           </Link>
