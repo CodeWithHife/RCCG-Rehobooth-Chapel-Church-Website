@@ -11,17 +11,16 @@ export default function Details() {
   return (
     <section className="w-full bg-[#0B1E3D] px-6 md:px-16 py-16 md:py-24">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-        {/* Logo */}
+        {/* Image */}
         <Reveal>
-          <div className="relative w-full h-72 md:h-[420px] rounded-xl overflow-hidden shadow-lg shadow-black/40 border border-white/10 bg-gradient-to-br from-[#3a0f3f] via-[#4a1a52] to-[#2a1454] flex items-center justify-center">
-            <div className="relative w-40 h-40 md:w-56 md:h-56">
-              <Image
-                src="/logo.png"
-                alt="RCCG Rehoboth Chapel logo"
-                fill
-                className="object-contain"
-              />
-            </div>
+          <div className="relative w-full h-72 md:h-[420px] rounded-xl overflow-hidden shadow-lg shadow-black/40 border border-white/10">
+            <Image
+              src="/about/abt.jpg"
+              alt="RCCG Rehoboth Chapel"
+              fill
+              className="object-cover object-top"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#2a1454]/50 to-transparent" />
           </div>
         </Reveal>
 
