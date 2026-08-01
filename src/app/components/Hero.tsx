@@ -218,10 +218,10 @@ export default function Hero() {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-12 md:mt-10">
           <Link
-            href="/programs"
+            href="/#contact"
             className="w-full sm:w-auto sm:min-w-[180px] text-center bg-[#D4AF37] text-[#0B1E3D] font-bold text-sm sm:text-base px-6 py-3.5 sm:py-3 rounded-full shadow-md shadow-black/30 active:scale-95 hover:bg-[#c29d2e] hover:shadow-lg hover:shadow-[#D4AF37]/30 sm:hover:-translate-y-0.5 transition-all duration-300"
           >
-            Our Programs
+            Contact Us
           </Link>
           <Link
             href="/give"

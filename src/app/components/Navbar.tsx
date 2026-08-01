@@ -8,10 +8,10 @@ import { useState } from "react";
 
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Services", href: "/services" },
-  { name: "Programs", href: "/programs" },
-  { name: "Contact", href: "/contact" },
+  { name: "About", href: "/#about" },
+  { name: "Ministers", href: "/#ministers" },
+  { name: "Departments", href: "/#departments" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
@@ -37,7 +37,7 @@ export default function Navbar() {
       {/* Desktop Links */}
       <div className="hidden md:flex items-center gap-8">
         {navLinks.map((link) => {
-          const isActive = pathname === link.href;
+          const isActive = pathname === "/" && link.href === "/" ? pathname === link.href : false;
           return (
             <Link
               key={link.name}
@@ -94,21 +94,16 @@ export default function Navbar() {
           isOpen ? "max-h-[400px] py-6 opacity-100" : "max-h-0 py-0 opacity-0"
         }`}
       >
-        {navLinks.map((link) => {
-          const isActive = pathname === link.href;
-          return (
-            <Link
-              key={link.name}
-              href={link.href}
-              className={`font-medium text-lg transition-colors ${
-                isActive ? "text-[#D4AF37]" : "text-white hover:text-[#D4AF37]"
-              }`}
-              onClick={() => setIsOpen(false)}
-            >
-              {link.name}
-            </Link>
-          );
-        })}
+        {navLinks.map((link) => (
+          <Link
+            key={link.name}
+            href={link.href}
+            className="font-medium text-lg text-white hover:text-[#D4AF37] transition-colors"
+            onClick={() => setIsOpen(false)}
+          >
+            {link.name}
+          </Link>
+        ))}
         <Link
           href="/give"
           className="bg-[#D4AF37] text-[#0B1E3D] font-bold px-6 py-2 rounded-full"

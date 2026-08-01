@@ -9,7 +9,7 @@ const serviceTimes = [
 
 export default function Details() {
   return (
-    <section className="w-full bg-[#0B1E3D] px-6 md:px-16 py-16 md:py-24">
+    <section id="about" className="w-full bg-[#0B1E3D] px-6 md:px-16 py-16 md:py-24 scroll-mt-24">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
         {/* Image */}
         <Reveal>

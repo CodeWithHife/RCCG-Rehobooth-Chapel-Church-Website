@@ -66,7 +66,7 @@ function DepartmentCard({ name, tagline, images }: { name: string; tagline: stri
 
 export default function Department() {
   return (
-    <section className="relative w-full bg-[#0B1E3D] px-6 md:px-16 py-20 md:py-28 overflow-hidden">
+    <section id="departments" className="relative w-full bg-[#0B1E3D] px-6 md:px-16 py-20 md:py-28 overflow-hidden scroll-mt-24">
       <div className="absolute top-0 right-1/4 w-72 h-72 bg-[#D4AF37] rounded-full blur-[140px] opacity-10 -z-0" />
       <div className="absolute bottom-0 left-1/4 w-72 h-72 bg-[#5b1a4a] rounded-full blur-[120px] opacity-30 -z-0" />
 

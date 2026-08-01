@@ -16,6 +16,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "RCCG Rehoboth Chapel",
   description: "Room for More — a family of believers committed to holiness, worship, and reaching every nation for the Lord Jesus Christ.",
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({
