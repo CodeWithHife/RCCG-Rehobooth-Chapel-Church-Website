@@ -13,14 +13,14 @@ const ministers = [
   {
     name: "Pastor Femi Eniokanoselu",
     role: "Assistant Pastor",
-    tag: "Youth Province 15",
+    tag: "Rehoboth Chapel",
     image: "/minister/min2.jpg",
     phone: "2348066579342",
   },
   {
     name: "Pastor Emmanuel Oyetola",
     role: "Assistant Pastor",
-    tag: "Youth Province 15",
+    tag: "Rehoboth Chapel",
     image: "/minister/min3.jpg",
     phone: "2348060400021",
   },
