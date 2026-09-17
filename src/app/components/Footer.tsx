@@ -10,10 +10,10 @@ const FACEBOOK_URL = "https://web.facebook.com/people/RCCG-Rehoboth-Chapel/61590
 
 const quickLinks = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Departments", href: "/departments" },
-  { name: "Ministers", href: "/ministers" },
-  { name: "Contact", href: "/contact" },
+  { name: "About", href: "/#about" },
+  { name: "Ministers", href: "/#ministers" },
+  { name: "Departments", href: "/#departments" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 const socialLinks = [
@@ -39,9 +39,8 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-linear-to-b from-[#0B1E3D] to-[#060f1f] border-t border-[#D4AF37]/20 pt-16 pb-6 px-6 md:px-16">
+    <footer className="w-full bg-[#071326] border-t border-[#D4AF37]/20 pt-16 pb-6 px-6 md:px-16">
       <div className="max-w-6xl mx-auto">
-        {/* Main Footer Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Column 1: Brand */}
           <div className="space-y-4">
@@ -110,12 +109,6 @@ export default function Footer() {
                 </svg>
                 <span>+234 911 252 1558</span>
               </li>
-              {/* <li className="flex items-center gap-3 text-gray-400">
-                <svg className="w-4 h-4 text-[#D4AF37]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z" />
-                </svg>
-              
-              </li> */}
             </ul>
           </div>
 
@@ -139,7 +132,7 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="my-10 h-px bg-linear-to-r from-transparent via-[#D4AF37]/30 to-transparent" />
+        <div className="my-10 h-px bg-[#D4AF37]/20" />
 
         {/* Copyright */}
         <div className="flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500 space-y-2 sm:space-y-0">

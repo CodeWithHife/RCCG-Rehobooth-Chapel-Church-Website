@@ -1,4 +1,3 @@
-// src/app/components/Hero.tsx
 "use client";
 
 import { useEffect, useState } from "react";
@@ -6,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const heroImages = ["/hero/img1.jpg", "/hero/img2.jpg", "/hero/img3.jpg"];
+const MAPS_URL = "https://www.google.com/maps/dir/?api=1&destination=Edola+Hotel,+Leme,+Abeokuta,+Ogun+State";
 
 // Nigeria is UTC+1 year-round (no daylight saving)
 function getNigeriaNow() {
@@ -85,24 +85,18 @@ function useCountdown() {
 export default function Hero() {
   const { days, hours, minutes, seconds, targetLabel, ongoing } = useCountdown();
   const [currentImage, setCurrentImage] = useState(0);
-  const [showMobilePopup, setShowMobilePopup] = useState(false);
 
   useEffect(() => {
     const slideInterval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % heroImages.length);
-    }, 5000);
+    }, 5500);
     return () => clearInterval(slideInterval);
   }, []);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setShowMobilePopup(true), 800);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
-    <main className="relative w-full min-h-screen overflow-hidden">
-      {/* Background Image Slideshow */}
-      <div className="absolute inset-0 -z-10">
+    <section className="relative w-full min-h-[95vh] flex items-center justify-center pt-32 sm:pt-40 pb-20 sm:pb-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Background Image Slideshow - Fully Visible */}
+      <div className="absolute inset-0 z-0">
         {heroImages.map((img, index) => (
           <div
             key={img}
@@ -112,125 +106,147 @@ export default function Hero() {
           >
             <Image
               src={img}
-              alt="Worship service"
+              alt="RCCG Rehoboth Chapel Worship Service"
               fill
               priority={index === 0}
               className="object-cover object-[center_35%]"
             />
           </div>
         ))}
+        {/* Soft Vignette Overlay for Readability */}
         <div className="absolute inset-0 bg-[#0B1E3D]/70" />
       </div>
 
-      {/* Mobile Popup */}
-      <div
-        className={`md:hidden fixed top-20 left-4 right-4 z-40 transition-all duration-500 ease-out ${
-          showMobilePopup ? "translate-y-0 opacity-100" : "-translate-y-6 opacity-0 pointer-events-none"
-        }`}
-      >
-        <div className="bg-gradient-to-br from-[#3a0f3f]/95 via-[#4a1a52]/95 to-[#2a1454]/95 backdrop-blur-md border border-white/20 rounded-xl px-4 py-3.5 shadow-lg shadow-black/40 flex items-center justify-between gap-3">
-          {ongoing ? (
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse shrink-0" />
-              <p className="text-white text-xs sm:text-sm font-medium">
-                Service is <span className="text-[#D4AF37] font-semibold">ongoing</span> — join us now!
-              </p>
+      {/* Main Container - Well Spaced 2 Columns */}
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Column: Headline & Info (7 cols) */}
+          <div className="lg:col-span-7 flex flex-col items-start text-left">
+            {/* Top Church Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0B1E3D]/80 border border-[#D4AF37]/40 mb-6 backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-[#D4AF37]" />
+              <span className="text-xs font-semibold tracking-widest text-[#D4AF37] uppercase">
+                THE REDEEMED CHRISTIAN CHURCH OF GOD
+              </span>
             </div>
-          ) : (
-            <div className="flex-1">
-              <p className="text-[#D4AF37] text-[10px] tracking-widest font-semibold mb-1">
-                DON'T MISS CHURCH
-              </p>
-              <p className="text-white text-xs sm:text-sm">
-                Service starts in{" "}
-                <span className="font-bold">
-                  {days}d {hours}h {minutes}m
-                </span>
-              </p>
+
+            {/* Headline */}
+            <h1 className="font-serif font-bold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.15] tracking-wide mb-4">
+              RCCG REHOBOTH <br />
+              <span className="text-[#D4AF37]">CHAPEL</span>
+            </h1>
+
+            {/* Slogan */}
+            <p className="text-[#D4AF37] font-serif italic text-lg sm:text-xl mb-6">
+              " Room for More "
+            </p>
+
+            {/* Welcome Text */}
+            <p className="text-slate-100 text-sm sm:text-base leading-relaxed max-w-xl mb-8 font-light drop-shadow-sm">
+              Founded in April 2016, we are a family of believers committed to holiness,
+              worship, and reaching every nation for the Lord Jesus Christ. You are welcome —
+              there is room for you here.
+            </p>
+
+            {/* Action Buttons */}
+            <div className="flex flex-wrap items-center gap-4 w-full sm:w-auto">
+              <Link
+                href="/#contact"
+                className="w-full sm:w-auto text-center px-8 py-3.5 rounded-xl bg-[#D4AF37] hover:bg-[#c29d2e] text-[#0B1E3D] font-bold text-sm tracking-wide shadow-lg shadow-black/40 transition-all duration-300"
+              >
+                Contact Us
+              </Link>
+              <Link
+                href="/give"
+                className="w-full sm:w-auto text-center px-8 py-3.5 rounded-xl bg-[#0B1E3D]/80 hover:bg-white hover:text-[#0B1E3D] text-white border border-white/40 font-semibold text-sm tracking-wide backdrop-blur-md transition-all duration-300"
+              >
+                Give Offering
+              </Link>
             </div>
-          )}
-          <button
-            onClick={() => setShowMobilePopup(false)}
-            aria-label="Dismiss"
-            className="text-white/70 hover:text-white text-lg shrink-0 leading-none"
-          >
-            ✕
-          </button>
+          </div>
+
+          {/* Right Column: Standalone Next Service Countdown Card (5 cols) */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end w-full">
+            <div className="w-full max-w-md bg-[#0B1E3D]/85 backdrop-blur-xl border border-white/20 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-black/60">
+              {ongoing ? (
+                <div className="text-center py-4">
+                  <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-red-950 border border-red-500/50 text-red-400 text-xs font-bold uppercase mb-4">
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse" />
+                    <span>SERVICE LIVE NOW</span>
+                  </div>
+                  <h3 className="font-serif font-bold text-2xl text-white mb-2">
+                    Celebration Service
+                  </h3>
+                  <p className="text-slate-200 text-sm mb-6 font-light">
+                    Fellowship is ongoing right now! Come worship with us at Edola Hotel, Leme, Abeokuta.
+                  </p>
+                  <a
+                    href={MAPS_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full py-3 rounded-xl bg-[#D4AF37] hover:bg-[#c29d2e] text-[#0B1E3D] font-bold text-sm text-center transition-colors"
+                  >
+                    Get Live Directions
+                  </a>
+                </div>
+              ) : (
+                <div>
+                  {/* Card Header */}
+                  <div className="flex items-center justify-between pb-4 mb-6 border-b border-white/10">
+                    <div>
+                      <span className="text-[11px] font-bold text-[#D4AF37] tracking-widest uppercase block">
+                        NEXT SUNDAY SERVICE
+                      </span>
+                      <p className="text-white font-medium text-sm mt-0.5">
+                        {targetLabel} • 9:00 AM
+                      </p>
+                    </div>
+                    <span className="text-[10px] font-mono text-slate-300 bg-white/10 px-2 py-1 rounded-md">
+                      WAT (UTC+1)
+                    </span>
+                  </div>
+
+                  {/* 4 Separated Countdown Boxes with Clear Spacing */}
+                  <div className="grid grid-cols-4 gap-2.5 sm:gap-3 mb-6">
+                    {[
+                      { label: "DAYS", value: days },
+                      { label: "HRS", value: hours },
+                      { label: "MIN", value: minutes },
+                      { label: "SEC", value: seconds },
+                    ].map((unit) => (
+                      <div
+                        key={unit.label}
+                        className="flex flex-col items-center justify-center p-3 rounded-2xl bg-white/[0.06] border border-white/15 shadow-inner"
+                      >
+                        <span className="font-mono font-bold text-2xl sm:text-3xl text-[#D4AF37]">
+                          {String(unit.value).padStart(2, "0")}
+                        </span>
+                        <span className="text-[10px] text-slate-300 font-semibold tracking-wider mt-1">
+                          {unit.label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Get Directions Button Linking directly to Google Maps */}
+                  <div className="pt-2 text-center">
+                    <a
+                      href={MAPS_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full py-3 rounded-xl bg-[#D4AF37] hover:bg-[#c29d2e] text-[#0B1E3D] font-bold text-sm transition-colors shadow-md text-center"
+                    >
+                      Get Directions to Church
+                    </a>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
         </div>
       </div>
-
-      <section className="px-6 sm:px-8 md:px-16 pt-32 md:pt-14 pb-16 md:pb-32 max-w-5xl">
-        {/* Desktop Countdown / Ongoing Card */}
-        <div className="hidden md:block absolute top-24 right-16 bg-gradient-to-br from-[#3a0f3f]/80 via-[#4a1a52]/80 to-[#2a1454]/80 backdrop-blur-md border border-white/20 rounded-xl px-8 py-6 text-center shadow-lg shadow-black/30">
-          {ongoing ? (
-            <>
-              <span className="flex items-center justify-center gap-2 mb-2">
-                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                <p className="text-[#D4AF37] text-xs tracking-widest font-semibold">
-                  LIVE NOW
-                </p>
-              </span>
-              <p className="text-white text-sm font-medium">
-                Service is ongoing — join us!
-              </p>
-            </>
-          ) : (
-            <>
-              <p className="text-[#D4AF37] text-xs tracking-widest font-semibold mb-2">
-                NEXT SUNDAY SERVICE
-              </p>
-              <p className="text-white text-sm mb-4">{targetLabel} • 9:00 AM</p>
-              <div className="flex gap-4 text-white">
-                {[
-                  { label: "DAYS", value: days },
-                  { label: "HRS", value: hours },
-                  { label: "MIN", value: minutes },
-                  { label: "SEC", value: seconds },
-                ].map((item) => (
-                  <div key={item.label} className="flex flex-col items-center">
-                    <span className="text-2xl font-bold">{String(item.value).padStart(2, "0")}</span>
-                    <span className="text-[10px] text-gray-300 tracking-wide">{item.label}</span>
-                  </div>
-                ))}
-              </div>
-            </>
-          )}
-        </div>
-
-        {/* Headline */}
-        <h1 className="font-serif font-bold text-4xl sm:text-5xl md:text-6xl leading-tight text-white mt-6 md:mt-6">
-          RCCG REHOBOTH <br />
-          <span className="text-[#D4AF37]">CHAPEL</span>
-        </h1>
-
-        {/* Quote */}
-        <p className="text-[#D4AF37] italic mt-10 md:mt-10 text-base md:text-lg">
-          " Room for More "
-        </p>
-
-        {/* Description */}
-        <p className="text-gray-200 mt-7 md:mt-6 max-w-xl leading-relaxed text-sm sm:text-base">
-          Founded in April 2016, we are a family of believers committed to holiness,
-          worship, and reaching every nation for the Lord Jesus Christ. You are welcome —
-          there is room for you here.
-        </p>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-12 md:mt-10">
-          <Link
-            href="/#contact"
-            className="w-full sm:w-auto sm:min-w-[180px] text-center bg-[#D4AF37] text-[#0B1E3D] font-bold text-sm sm:text-base px-6 py-3.5 sm:py-3 rounded-full shadow-md shadow-black/30 active:scale-95 hover:bg-[#c29d2e] hover:shadow-lg hover:shadow-[#D4AF37]/30 sm:hover:-translate-y-0.5 transition-all duration-300"
-          >
-            Contact Us
-          </Link>
-          <Link
-            href="/give"
-            className="w-full sm:w-auto sm:min-w-[180px] text-center border border-white/70 text-white font-semibold text-sm sm:text-base px-6 py-3.5 sm:py-3 rounded-full active:scale-95 hover:bg-white hover:text-[#0B1E3D] sm:hover:-translate-y-0.5 transition-all duration-300"
-          >
-            Give
-          </Link>
-        </div>
-      </section>
-    </main>
+    </section>
   );
 }

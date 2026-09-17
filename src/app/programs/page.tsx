@@ -1,9 +1,14 @@
-import React from 'react'
+// src/app/programs/page.tsx
+import Department from "../components/Department";
+import Footer from "../components/Footer";
 
-const page = () => {
+export default function Programs() {
   return (
-    <div>page</div>
-  )
+    <>
+      <main className="min-h-[80vh] bg-[#0B1E3D] text-white">
+        <Department />
+      </main>
+      <Footer />
+    </>
+  );
 }
-
-export default page

@@ -5,6 +5,7 @@ import { useState } from "react";
 
 const PASTOR_PHONE = "2349112521558";
 const ADDRESS = "Edola Hotel, Leme, Abeokuta, Ogun State";
+const MAPS_URL = "https://www.google.com/maps/dir/?api=1&destination=Edola+Hotel,+Leme,+Abeokuta,+Ogun+State";
 
 const REASONS = [
   "Prayer Request",
@@ -36,9 +37,6 @@ export default function ContactDetails() {
 
   return (
     <section id="contact" className="relative w-full bg-[#0B1E3D] px-6 md:px-16 py-20 md:py-28 overflow-hidden scroll-mt-24">
-      <div className="absolute top-0 left-1/3 w-72 h-72 bg-[#D4AF37] rounded-full blur-[140px] opacity-10 -z-0" />
-      <div className="absolute bottom-0 right-1/3 w-72 h-72 bg-[#5b1a4a] rounded-full blur-[120px] opacity-30 -z-0" />
-
       <div className="relative max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <span className="inline-block text-[#D4AF37] text-xs tracking-[0.3em] font-semibold mb-3 border border-[#D4AF37]/30 rounded-full px-4 py-1">
@@ -53,7 +51,7 @@ export default function ContactDetails() {
         <div className="grid md:grid-cols-2 gap-10">
           {/* Left: Address + Map */}
           <div className="h-full flex flex-col gap-6">
-            <div className="bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl p-6 flex items-start gap-4">
+            <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-start gap-4">
               <span className="shrink-0 w-11 h-11 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/30 flex items-center justify-center">
                 <svg className="w-5 h-5 text-[#D4AF37]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 21s-7-6.16-7-11.5A7 7 0 0 1 19 9.5C19 14.84 12 21 12 21z" />
@@ -63,6 +61,14 @@ export default function ContactDetails() {
               <div>
                 <p className="text-[#D4AF37] text-xs tracking-widest font-semibold mb-1">OUR LOCATION</p>
                 <p className="text-white text-sm leading-relaxed">{ADDRESS}</p>
+                <a
+                  href={MAPS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-2 text-xs font-bold text-[#D4AF37] hover:underline"
+                >
+                  Get Google Maps Directions &rarr;
+                </a>
               </div>
             </div>
 
@@ -78,7 +84,7 @@ export default function ContactDetails() {
           </div>
 
           {/* Right: Message Form */}
-          <div className="bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl p-8 h-full">
+          <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 h-full">
             <div className="flex items-center gap-3 mb-6">
               <span className="w-11 h-11 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/30 flex items-center justify-center shrink-0">
                 <svg className="w-5 h-5 text-[#D4AF37]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
@@ -100,7 +106,7 @@ export default function ContactDetails() {
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                     placeholder="e.g. John"
-                    className="w-full bg-[#0B1E3D]/60 border border-white/15 rounded-lg px-4 py-3 text-white text-sm placeholder:text-gray-500 focus:outline-none focus:border-[#D4AF37]/60 transition-colors"
+                    className="w-full bg-[#0B1E3D] border border-white/15 rounded-lg px-4 py-3 text-white text-sm placeholder:text-gray-500 focus:outline-none focus:border-[#D4AF37] transition-colors"
                   />
                 </div>
                 <div>
@@ -110,7 +116,7 @@ export default function ContactDetails() {
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                     placeholder="e.g. Doe"
-                    className="w-full bg-[#0B1E3D]/60 border border-white/15 rounded-lg px-4 py-3 text-white text-sm placeholder:text-gray-500 focus:outline-none focus:border-[#D4AF37]/60 transition-colors"
+                    className="w-full bg-[#0B1E3D] border border-white/15 rounded-lg px-4 py-3 text-white text-sm placeholder:text-gray-500 focus:outline-none focus:border-[#D4AF37] transition-colors"
                   />
                 </div>
               </div>
@@ -123,7 +129,7 @@ export default function ContactDetails() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="you@example.com"
-                    className="w-full bg-[#0B1E3D]/60 border border-white/15 rounded-lg px-4 py-3 text-white text-sm placeholder:text-gray-500 focus:outline-none focus:border-[#D4AF37]/60 transition-colors"
+                    className="w-full bg-[#0B1E3D] border border-white/15 rounded-lg px-4 py-3 text-white text-sm placeholder:text-gray-500 focus:outline-none focus:border-[#D4AF37] transition-colors"
                   />
                 </div>
                 <div>
@@ -133,7 +139,7 @@ export default function ContactDetails() {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="e.g. 2348000000000"
-                    className="w-full bg-[#0B1E3D]/60 border border-white/15 rounded-lg px-4 py-3 text-white text-sm placeholder:text-gray-500 focus:outline-none focus:border-[#D4AF37]/60 transition-colors"
+                    className="w-full bg-[#0B1E3D] border border-white/15 rounded-lg px-4 py-3 text-white text-sm placeholder:text-gray-500 focus:outline-none focus:border-[#D4AF37] transition-colors"
                   />
                 </div>
               </div>
@@ -144,7 +150,7 @@ export default function ContactDetails() {
                   <select
                     value={reason}
                     onChange={(e) => setReason(e.target.value)}
-                    className="w-full appearance-none bg-[#0B1E3D]/60 border border-white/15 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#D4AF37]/60 transition-colors cursor-pointer"
+                    className="w-full appearance-none bg-[#0B1E3D] border border-white/15 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#D4AF37] transition-colors cursor-pointer"
                   >
                     {REASONS.map((r) => (
                       <option key={r} value={r} className="bg-[#0B1E3D] text-white">
@@ -171,13 +177,13 @@ export default function ContactDetails() {
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Type your message here"
                   rows={4}
-                  className="w-full bg-[#0B1E3D]/60 border border-white/15 rounded-lg px-4 py-3 text-white text-sm placeholder:text-gray-500 focus:outline-none focus:border-[#D4AF37]/60 transition-colors resize-none"
+                  className="w-full bg-[#0B1E3D] border border-white/15 rounded-lg px-4 py-3 text-white text-sm placeholder:text-gray-500 focus:outline-none focus:border-[#D4AF37] transition-colors resize-none"
                 />
               </div>
 
               <button
                 onClick={handleSend}
-                className="w-full inline-flex items-center justify-center gap-2 bg-[#D4AF37] text-[#0B1E3D] font-bold text-sm px-6 py-3.5 rounded-full shadow-lg shadow-[#D4AF37]/20 transition-all duration-300 hover:shadow-xl hover:shadow-[#D4AF37]/40 hover:-translate-y-0.5 hover:bg-[#e6c458]"
+                className="w-full inline-flex items-center justify-center gap-2 bg-[#D4AF37] text-[#0B1E3D] font-bold text-sm px-6 py-3.5 rounded-full hover:bg-[#c29d2e] transition-colors duration-300"
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.85 14.03c-.24.68-1.19 1.25-1.94 1.4-.51.11-1.17.19-3.42-.73-2.87-1.19-4.72-4.06-4.86-4.25-.14-.19-1.16-1.54-1.16-2.94s.72-2.09.98-2.37c.24-.27.53-.34.71-.34.18 0 .35 0 .5.01.16.01.38-.06.6.46.24.55.79 1.93.86 2.07.07.14.11.3.02.48-.09.19-.13.3-.26.46-.13.16-.27.35-.39.47-.13.13-.26.27-.11.53.14.27.65 1.07 1.4 1.73.97.86 1.78 1.13 2.05 1.26.27.13.42.11.58-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.27.13.44.19.51.3.06.11.06.65-.18 1.33z" />

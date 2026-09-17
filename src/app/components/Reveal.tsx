@@ -1,17 +1,20 @@
-// src/app/components/Reveal.tsx
 "use client";
 
 import { useEffect, useRef, useState, ReactNode } from "react";
+
+interface RevealProps {
+  children: ReactNode;
+  delay?: number;
+  className?: string;
+  direction?: "up" | "down" | "left" | "right" | "none";
+}
 
 export default function Reveal({
   children,
   delay = 0,
   className = "",
-}: {
-  children: ReactNode;
-  delay?: number;
-  className?: string;
-}) {
+  direction = "up",
+}: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -26,20 +29,36 @@ export default function Reveal({
           observer.disconnect();
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
 
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
+  const getTransformClass = () => {
+    if (visible) return "opacity-100 translate-x-0 translate-y-0 scale-100";
+    switch (direction) {
+      case "up":
+        return "opacity-0 translate-y-8";
+      case "down":
+        return "opacity-0 -translate-y-8";
+      case "left":
+        return "opacity-0 translate-x-8";
+      case "right":
+        return "opacity-0 -translate-x-8";
+      case "none":
+        return "opacity-0 scale-95";
+      default:
+        return "opacity-0 translate-y-8";
+    }
+  };
+
   return (
     <div
       ref={ref}
-      style={{ transitionDelay: visible ? `${delay}ms` : "0ms" }}
-      className={`transition-all duration-700 ease-out ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      } ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
+      className={`transition-all duration-700 cubic-bezier(0.16, 1, 0.3, 1) ${getTransformClass()} ${className}`}
     >
       {children}
     </div>

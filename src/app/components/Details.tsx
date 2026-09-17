@@ -20,7 +20,7 @@ export default function Details() {
               fill
               className="object-cover object-top"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#2a1454]/50 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1E3D]/50 to-transparent" />
           </div>
         </Reveal>
 
@@ -34,7 +34,7 @@ export default function Details() {
               Rehoboth Chapel
             </h2>
             <p className="text-gray-300 text-sm mb-6 tracking-wide">
-              Youth Province 15 · <span className="italic">Triple Grace</span>
+              A Family of Believers · <span className="italic">Room for More</span>
             </p>
 
             <p className="text-gray-300 leading-relaxed mb-8">
@@ -46,7 +46,7 @@ export default function Details() {
             <div className="grid grid-cols-2 gap-4">
               {serviceTimes.map((service, i) => (
                 <Reveal key={service.day} delay={250 + i * 100}>
-                  <div className="bg-gradient-to-br from-[#3a0f3f]/80 via-[#4a1a52]/80 to-[#2a1454]/80 border border-white/10 rounded-xl px-5 py-4 text-center">
+                  <div className="bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-center">
                     <p className="text-[#D4AF37] text-xs tracking-widest font-semibold mb-1">
                       {service.day.toUpperCase()}
                     </p>
