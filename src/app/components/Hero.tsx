@@ -123,14 +123,6 @@ export default function Hero() {
           
           {/* Left Column: Headline & Info (7 cols) */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
-            {/* Top Church Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0B1E3D]/80 border border-[#D4AF37]/40 mb-6 backdrop-blur-md">
-              <span className="w-2 h-2 rounded-full bg-[#D4AF37]" />
-              <span className="text-xs font-semibold tracking-widest text-[#D4AF37] uppercase">
-                THE REDEEMED CHRISTIAN CHURCH OF GOD
-              </span>
-            </div>
-
             {/* Headline */}
             <h1 className="font-serif font-bold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.15] tracking-wide mb-4">
               RCCG REHOBOTH <br />
